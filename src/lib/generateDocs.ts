@@ -46,7 +46,7 @@ class MarkdownGenerator {
                 rows: e.columns.map(c => [
                     c.databaseName,
                     this.getType(c, conn),
-                    c.comment
+                    c.comment||"なし"
                 ])
             });
             return md;
