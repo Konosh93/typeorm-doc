@@ -17,8 +17,8 @@ export async function generateDocs(
     if (!(root && configFile && outputFile)) {
         throw new Error("Invalid"); // TODO: ちゃんと
     }
+    const outputPath = path.resolve(process.cwd(), outputFile);
     const cwd = path.resolve( process.cwd(), root );
-    console.log(cwd)
     process.chdir( cwd );
     const connectionOptionsReader = new ConnectionOptionsReader({
         root: process.cwd(),
@@ -34,7 +34,7 @@ export async function generateDocs(
 
     const mg = new MarkdownGenerator();
     const md = mg.generate(entityMetadata, conn);
-    fs.writeFileSync(path.resolve(process.cwd(), outputFile), md, "utf-8");
+    fs.writeFileSync(outputPath, md, "utf-8");
 }
 
 class MarkdownGenerator {
