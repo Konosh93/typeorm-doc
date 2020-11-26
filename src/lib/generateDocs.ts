@@ -67,8 +67,7 @@ class MarkdownGenerator {
         //   if (headers.length !== rows.length) {
         //     throw new Error("Invalid rows");
         //   }
-        return `
-### ${tableName}
+        return `### ${tableName}
 
 ${headers.join(" | ")}
 ${headers.map(() => "--").join(" | ")}
